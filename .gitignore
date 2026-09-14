@@ -1,0 +1,17 @@
+# Secrets -- the bot token lives here
+.env
+
+# Live data and SQLite sidecar files
+*.db
+*.db-wal
+*.db-shm
+backups/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# OS cruft
+.DS_Store

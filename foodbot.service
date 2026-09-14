@@ -1,0 +1,28 @@
+[Unit]
+Description=Telegram food budget bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=foodbot
+Group=foodbot
+WorkingDirectory=/opt/foodbot
+EnvironmentFile=/opt/foodbot/.env
+ExecStart=/opt/foodbot/venv/bin/python /opt/foodbot/bot.py
+Restart=always
+RestartSec=10
+
+# Keep a crash loop from filling the disk with logs
+StandardOutput=journal
+StandardError=journal
+
+# Basic hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/foodbot
+
+[Install]
+WantedBy=multi-user.target
